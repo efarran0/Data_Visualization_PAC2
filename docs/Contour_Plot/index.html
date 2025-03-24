@@ -169,7 +169,7 @@
       const filteredData = data.filter(d => d.month === month);
       xScale.domain([0, d3.max(filteredData, d => d.price)]);
       yScale.domain([0, d3.max(filteredData, d => d.quantity)]);
-      generateContourPlot(filteredData);
+      getContourPlot(filteredData);
     }
 
     updateChart(0);
