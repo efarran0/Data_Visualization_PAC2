@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contour Plot de Demanda Empresarial</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .contour-plot {
+      margin-top: 20px;
+    }
+    .slider {
+      position: absolute; /* Treu el desllisor del flux normal */
+      margin-top: 20px; /* Distància des de la part superior */
+      margin-left: 600px; /* Distància des de l'esquerra */
+    }
+    .color-legend {
+      display: flex;
+      flex-direction: row;
+      margin-left: 600px;
+      margin-top: -450px;
+    }
+    .tooltip {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      pointer-events: none;
+      font-size: 12px;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Previsió de Demanda Empresarial per Mes</h1>
+  <div class="slider">
+    <label for="month-slider">Mes:</label>
+    <input type="range" id="month-slider" min="0" max="11" value="0" step="1">
+    <span id="month-label">Gener</span>
+  </div>
+  <div class="contour-plot"></div>
+  <div class="color-legend">
+    <svg id="legend-svg" width="300" height="50"></svg>
+    <span>Densitat de Demanda</span>
+  </div>
+  <div class="tooltip"></div>
+
+  <script>
+    const generateData = () => {
+      const data = [];
+      const months = 12;
+      const pointsPerMonth = 5000;
+      const constant = 40;
+
+      for (let month = 0; month < months; month++) {
+        for (let i = 0; i < pointsPerMonth; i++) {
+          const price = Math.random() * 50 + 1;
+          const quantity = constant / price;
+          const demand = quantity * 20;
+          data.push({ month, price, quantity, demand });
+        }
+      }
+      return data;
+    };
+
+    const data = generateData();
+    const width = 600, height = 500, margin = { top: 40, right: 40, bottom: 60, left: 60 };
+    const xScale = d3.scaleLinear().range([margin.left, width - margin.right]);
+    const yScale = d3.scaleLinear().range([height - margin.bottom, margin.top]);
+    const svg = d3.select(".contour-plot").append("svg").attr("width", width).attr("height", height);
+    const tooltip = d3.select(".tooltip");
+
+    function generateContourPlot(data) {
+      svg.selectAll("*").remove();
+      const contours = d3.contourDensity()
+        .x(d => xScale(d.price))
+        .y(d => yScale(d.quantity))
+        .weight(d => d.demand)
+        .size([width, height])
+        .bandwidth(20)
+        (data);
+
+      const maxDensity = d3.max(contours, d => d.value);
+
+      // Escala de colors de groc a vermell
+      const colorScale = d3.scaleLinear()
+        .domain([0, maxDensity])
+        .range(["yellow", "red"]);
+
+      svg.selectAll("path")
+        .data(contours)
+        .enter()
+        .append("path")
+        .attr("d", d3.geoPath())
+        .attr("fill", d => colorScale(d.value)) // Utilitza l'escala de colors
+        .attr("stroke", "#000")
+        .attr("stroke-width", 0.5)
+        .attr("opacity", 1) // Sense transparència addicional
+        .on("mouseover", function(event, d) {
+          tooltip.transition().duration(200).style("opacity", 0.9);
+          tooltip.html(`Densitat: ${d.value.toFixed(2)}`)
+            .style("left", (event.pageX + 5) + "px")
+            .style("top", (event.pageY - 20) + "px");
+        })
+        .on("mouseout", function() {
+          tooltip.transition().duration(500).style("opacity", 0);
+        });
+
+      const xAxis = d3.axisBottom(xScale);
+      const yAxis = d3.axisLeft(yScale);
+
+      svg.append("g").attr("transform", `translate(0, ${height - margin.bottom})`).call(xAxis);
+      svg.append("g").attr("transform", `translate(${margin.left}, 0)`).call(yAxis);
+
+      svg.append("text").attr("x", width / 2).attr("y", height - 10).attr("text-anchor", "middle").text("Preu (euros)");
+      svg.append("text").attr("transform", "rotate(-90)").attr("x", -height / 2).attr("y", 20).attr("text-anchor", "middle").text("Quantitat (unitats)");
+
+      updateLegend(maxDensity);
+    }
+
+    function updateLegend(maxDensity) {
+      const legendSvg = d3.select("#legend-svg");
+      legendSvg.selectAll("*").remove();
+
+      const gradient = legendSvg.append("defs")
+        .append("linearGradient")
+        .attr("id", "legendGradient")
+        .attr("x1", "0%").attr("x2", "100%")
+        .attr("y1", "0%").attr("y2", "0%");
+
+      gradient.append("stop").attr("offset", "0%").attr("stop-color", "yellow");
+      gradient.append("stop").attr("offset", "100%").attr("stop-color", "red");
+
+      legendSvg.append("rect")
+        .attr("x", 0)
+        .attr("y", 10)
+        .attr("width", 300)
+        .attr("height", 20)
+        .style("fill", "url(#legendGradient)");
+
+      const legendScale = d3.scaleLinear()
+        .domain([0, maxDensity])
+        .range([0, 300]);
+
+      const legendAxis = d3.axisBottom(legendScale).ticks(5);
+      legendSvg.append("g").attr("transform", "translate(0, 30)").call(legendAxis);
+    }
+
+    function updateChart(month) {
+      const filteredData = data.filter(d => d.month === month);
+      xScale.domain([0, d3.max(filteredData, d => d.price)]);
+      yScale.domain([0, d3.max(filteredData, d => d.quantity)]);
+      generateContourPlot(filteredData);
+    }
+
+    updateChart(0);
+
+    const monthNames = ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"];
+    const slider = d3.select("#month-slider");
+    const monthLabel = d3.select("#month-label");
+
+    slider.on("input", function() {
+      const month = +this.value;
+      monthLabel.text(monthNames[month]);
+      updateChart(month);
+    });
+  </script>
+</body>
+</html>
+
+
