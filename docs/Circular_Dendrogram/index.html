@@ -6,6 +6,7 @@
     <title>Supermarket Customer Segmentation Visualization</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
+        
         body { 
             font-family: Arial, sans-serif; 
             text-align: center; 
@@ -17,12 +18,14 @@
             justify-content: center;
             min-height: 100vh;
         }
+        
         h1 { 
             font-size: 24px; 
             font-weight: bold; 
-            margin: 40px 0 -100px 0; /* Marge superior de 40px i inferior de 20px */
+            margin: 40px 0 -100px 0;
         }
-        text { font-size: 10px; display: none; } /* Amaguem les etiquetes per defecte */
+        
+        text { font-size: 10px; display: none; } /* S'amaguen les etiquetes per defecte */
         .tooltip {
             position: absolute;
             background: rgba(0, 0, 0, 0.8);
@@ -33,20 +36,24 @@
             visibility: hidden;
             pointer-events: none;
             max-width: 200px;
-            text-align: left; /* Alineació general a l'esquerra */
+            text-align: left;
         }
+        
         .tooltip.aggregate {
             font-size: 14px;
             padding: 15px;
             max-width: 250px;
         }
+        
         .tooltip-title {
-            text-align: center; /* Títol centrat */
+            text-align: center;
             font-weight: bold;
         }
+        
         .tooltip-content {
-            text-align: left; /* Contingut alineat a l'esquerra */
+            text-align: left;
         }
+        
     </style>
 </head>
 <body>
@@ -63,44 +70,44 @@ const width = 900;
 const height = 900;
 const radius = width / 2 - 50;
 
-// Creem el layout del dendrograma
+// Es crea el layout del dendrograma
 const tree = d3.cluster().size([2 * Math.PI, radius - 150]);
 
-// Funció per generar clients amb comportament diferenciat
-function generarClients(cluster, numClients, visitesRange, despesaRange) {
+// Funció per generar clients de manera aleatòria amb comportament diferenciat
+function getClients(cluster, numClients, visitesRange, despesaRange) {
     let clients = Array.from({ length: numClients }, (_, i) => ({
         name: `Client ${cluster}-${i + 1}`,
         visites: Math.floor(Math.random() * (visitesRange[1] - visitesRange[0] + 1)) + visitesRange[0],
         despesa: Math.floor(Math.random() * (despesaRange[1] - despesaRange[0] + 1)) + despesaRange[0]
     }));
 
-    // Calcular mitjanes del clúster
+    // Es calcula les mitjanes per cada clúster
     const totalVisites = clients.reduce((sum, c) => sum + c.visites, 0);
     const totalDespesa = clients.reduce((sum, c) => sum + c.despesa, 0);
     const mitjanaVisites = (totalVisites / numClients).toFixed(1);
     const mitjanaDespesa = (totalDespesa / numClients).toFixed(1);
 
-    // Retornem els clients i agreguem la informació agregada
+    // REs retorna els clients i s'agrega la informació individual
     return {
         name: `Cluster ${cluster}`,
         avgVisites: mitjanaVisites,
         avgDespesa: mitjanaDespesa,
-        numClients: numClients,  // Afegim el nombre de clients
+        numClients: numClients,
         children: clients
     };
 }
 
-// Dades jeràrquiques amb informació de clients i agregats
+// S'obtenen les dades
 const data = {
     name: "Supermarket Customers",
     children: [
-        generarClients(1, 25, [1, 3], [50, 150]), // Premium: menys visites, més despesa
-        generarClients(2, 175, [4, 7], [20, 50]),  // Regulars: més visites, despesa mitjana
-        generarClients(3, 50, [1, 2], [5, 20])    // Esporàdics: poques visites, baixa despesa
+        getClients(1, 25, [1, 3], [50, 150]), // Premium: menys visites, més despesa
+        getClients(2, 175, [4, 7], [20, 50]),  // Regulars: més visites, despesa mitjana
+        getClients(3, 50, [1, 2], [5, 20])    // Esporàdics: poques visites, menys despesa
     ]
 };
 
-// Calcular dades agregades per al node central
+// Es calculen les mètriques globals
 function calcularDadesAgregades(root) {
     const clients = root.descendants().filter(d => d.depth ===2);
     const totalVisites = root.descendants().slice(1).reduce((sum, d) => sum + (d.data.visites || 0), 0);
@@ -113,11 +120,11 @@ function calcularDadesAgregades(root) {
     };
 }
 
-// Convertim les dades en estructura jeràrquica
+// Es converteixen les dades a estructura jeràrquica
 const root = d3.hierarchy(data);
 tree(root);
 
-// Afegim les dades agregades al node central
+// S'afegeix les dades totals al node central
 const dadesAgregades = calcularDadesAgregades(root);
 root.data.avgVisites = dadesAgregades.avgVisites;
 root.data.avgDespesa = dadesAgregades.avgDespesa;
@@ -132,7 +139,7 @@ const svg = d3.select("svg")
 const g = svg.append("g")
     .attr("transform", `translate(${width / 2},${height / 2})`);
 
-// Colors per clústers
+// Colors pels clústers
 const colorScale = d3.scaleOrdinal()
     .domain([1, 2, 3])  // 3 clústers
     .range(["#E57373", "#81C784", "#64B5F6"]);  // Colors únics per a cada clúster
@@ -143,7 +150,7 @@ const rootColor = "#FFD700";  // Groc
 // Tooltip per mostrar informació
 const tooltip = d3.select("#tooltip");
 
-// Dibuixar línies d'unió amb colors corresponents al clúster de destí
+// Es dibuixen línies d'unió amb els mateixos colors que el clúster
 g.selectAll("path")
     .data(root.links())
     .enter().append("path")
@@ -152,36 +159,34 @@ g.selectAll("path")
         .radius(d => d.y))
     .style("fill", "none")
     .style("stroke", d => {
-        // Si la línia connecta el node central amb un clúster, agafem el color del clúster
+        // Si la línia connecta el node central amb un clúster agafem el color del clúster, altrament el del client
         if (d.source.depth === 0) {
             return colorScale(d.target.data.name.split(" ")[1]);
         } else {
-            // Altres línies (entre clústers i clients) tenen el color del clúster pare
             return colorScale(d.source.data.name.split(" ")[1]);
         }
     })
     .style("stroke-width", 1.5);
 
-// Dibuixar nodes amb mida diferent per a clients i clusters
+// Es dimensionen els nodes segons la classe
 const nodes = g.selectAll("circle")
     .data(root.descendants())
     .enter().append("circle")
     .attr("transform", d => `rotate(${(d.x * 180 / Math.PI) - 90}) translate(${d.y},0)`)
     .attr("r", d => {
-        // Assignar mida petita als nodes de clients
         if (d.depth === 2) {
-            return 4;  // Mida més petita per als clients
+            return 4;  // Mida petita pels clients
         } else if (d.depth === 0) {
-            return 15;  // Mida més gran per al node central
+            return 15;  // Mida gran pel centre
         } else {
-            return 10;  // Mida per als nodes de clusters
+            return 10;  // Mida mitjana pels clusters
         }
     })
     .style("fill", d => {
         if (d.depth === 0) {
-            return rootColor;  // Color groc per al node central
+            return rootColor;
         } else if (d.depth === 2) {
-            // Si és un client, agafem el color del clúster pare
+            // Si és un client, agafem el color del clúster
             return colorScale(d.parent.data.name.split(" ")[1]);
         } else {
             // Si és un clúster, agafem el color directament
@@ -191,7 +196,7 @@ const nodes = g.selectAll("circle")
     .style("stroke", "#333")
     .style("stroke-width", 1.5)
     .on("mouseover", function(event, d) {
-        // Mostrem informació al tooltip
+        // Es mostra la informació al tooltip
         let info = "";
         if (d.depth === 0) { 
             // Node central
@@ -226,7 +231,7 @@ const nodes = g.selectAll("circle")
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY + 10) + "px");
 
-        // Fer més gran el node seleccionat
+        // Es fa més gran el node seleccionat
         d3.select(this)
             .transition()
             .duration(200)
@@ -246,7 +251,7 @@ const nodes = g.selectAll("circle")
             .attr("r", d => d.depth === 2 ? 4 : (d.depth === 0 ? 15 : 10));  // Retornar la mida per als clients
     });
 
-// Afegir etiquetes als clústers
+// S'afegeixen etiquetes als clústers
 g.selectAll("text.cluster-label")
     .data(root.descendants().filter(d => d.depth === 1)) // Només per als clústers
     .enter().append("text")
