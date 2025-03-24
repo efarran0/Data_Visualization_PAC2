@@ -6,7 +6,7 @@
     <title>Roadmap interactiu amb D3.js</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
-        /* Estil general per a la pàgina */
+        /* S'estableix l'estil de la pàgina */
         body {
             margin: 0;
             padding: 0;
@@ -19,14 +19,14 @@
             overflow: hidden;
         }
 
-        /* Estils per al títol */
+        /* S'estableix l'estil del títol */
         h2 {
             text-align: center;
             margin-top: 20px;
             margin-bottom: 0px;
         }
 
-        /* Estils per a la línia de temps (timeline) */
+        /* S'estableix l'estil del timeline */
         .timeline {
             position: relative;
             width: 100%;
@@ -35,7 +35,7 @@
             margin-bottom: -200px;
         }
 
-        /* Estils per a la llista de descripcions */
+        /* S'estableixen els estils de les descripcions */
         #description-list {
             list-style: none;
             padding-left: 0;
@@ -61,13 +61,13 @@
             text-align: center;
         }
 
-        /* Estils per a les etiquetes (labels) de les dates i noms d'esdeveniments */
+        /* S'estableix l'estil de les etiquetes */
         .label {
             font-size: 12px;
             text-anchor: middle;
         }
 
-        /* Estils per a la finestra emergent (tooltip) que mostra informació addicional */
+        /* S'estableix l'estil del tooltip */
         .tooltip {
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
@@ -77,7 +77,7 @@
             font-size: 12px;
         }
 
-        /* Estil per a les fletxes en la línia de temps */
+        /* S'estableix l'estil de la fletxa unidireccional */
         .arrow-head {
             fill: black;
         }
@@ -87,7 +87,7 @@
 
     <h2>ClassicHub roadmap</h2>
     
-    <!-- Zona per a la línia de temps (timeline) amb D3.js -->
+    <!-- Es defineix la dimensió i posicionament del timeline -->
     <svg width="100%" height="450" viewBox="50 0 850 300" class="timeline">
         <defs>
             <!-- Definició de la fletxa per a la línia de temps -->
@@ -97,10 +97,10 @@
         </defs>
     </svg>
 
-    <!-- Tooltip per mostrar informació addicional (actualment inactiu) -->
+    <!-- Tooltip -->
     <div class="tooltip"></div>
 
-    <!-- Contenidor per a mostrar la descripció del punt seleccionat -->
+    <!-- Contenidor del punt selecionat -->
     <div id="description-container" class="description" style="display: none;">
         <h3 id="description-title" align="center"></h3>
         <ul id="description-list"></ul>
@@ -162,15 +162,15 @@
         // Funció per formatar les dates en format "Mes Any"
         const formatDate = d3.timeFormat("%b %Y");
 
-        // Escala per a la línia de temps basada en les dates
+        // S'escala el timline a les dades
         const xScale = d3.scaleTime()
                          .domain([parseDate("2024-04-01"), parseDate("2024-09-01")])
                          .range([200, 780]);
 
-        // Selecció del SVG per afegir els elements de la línia de temps
+        // Selecció del SVG per afegir els elements del timeline
         const svg = d3.select(".timeline");
 
-        // Dibuix de la línia principal de la línia de temps
+        // Dibuix de la línia principal
         svg.append("line")
            .attr("x1", 200).attr("y1", 200)
            .attr("x2", 800).attr("y2", 200)
@@ -178,10 +178,10 @@
            .attr("stroke-width", 1.5)
            .attr("marker-end", "url(#arrow)");
 
-        // Variable per emmagatzemar l'event seleccionat
+        // Element seleccionat
         let selectedEvent = null;
 
-        // Creació dels cercles per a cada esdeveniment a la línia de temps
+        // Creació dels cercles per a cada esdeveniment
         svg.selectAll(".event")
            .data(events)
            .enter()
@@ -202,7 +202,7 @@
                 d3.select(this)
                   .attr("fill", "orange");
 
-                // Actualitzar el node seleccionat
+                // Actualitzar el node clicat
                 selectedEvent = this;
 
                 // Mostrar el nom de la fase
@@ -223,7 +223,7 @@
                   .style("display", "block");
            });
 
-        // Afegir els noms dels esdeveniments a la línia de temps
+        // Afegir els noms dels esdeveniments al timeline
         svg.selectAll(".label-name")
            .data(events)
            .enter()
@@ -233,7 +233,7 @@
            .attr("y", 180)
            .text(d => d.name);
 
-        // Afegir les dates dels esdeveniments a la línia de temps
+        // Afegir les dates dels esdeveniments al timeline
         svg.selectAll(".label-date")
            .data(events)
            .enter()
@@ -241,7 +241,7 @@
            .attr("class", "label")
            .attr("x", d => xScale(parseDate(d.date)))
            .attr("y", 230)
-           .text(d => formatDate(parseDate(d.date)));  // Utilitzar la nova funció formatDate
+           .text(d => formatDate(parseDate(d.date)));  // S'utilitza la funció formatDate
     </script>
 
 </body>
