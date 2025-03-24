@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap interactiu amb D3.js</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        /* Estil general per a la pàgina */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Estils per al títol */
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+
+        /* Estils per a la línia de temps (timeline) */
+        .timeline {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            top: -150px;
+            margin-bottom: -200px;
+        }
+
+        /* Estils per a la llista de descripcions */
+        #description-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        #description-list li {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        #description-list li::before {
+            content: "•";
+            font-size: 15px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        /* Estils per a les etiquetes (labels) de les dates i noms d'esdeveniments */
+        .label {
+            font-size: 12px;
+            text-anchor: middle;
+        }
+
+        /* Estils per a la finestra emergent (tooltip) que mostra informació addicional */
+        .tooltip {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            visibility: hidden;
+            font-size: 12px;
+        }
+
+        /* Estil per a les fletxes en la línia de temps */
+        .arrow-head {
+            fill: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ClassicHub roadmap</h2>
+    
+    <!-- Zona per a la línia de temps (timeline) amb D3.js -->
+    <svg width="100%" height="450" viewBox="50 0 850 300" class="timeline">
+        <defs>
+            <!-- Definició de la fletxa per a la línia de temps -->
+            <marker id="arrow" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <polygon points="0,0 10,5 0,10" class="arrow-head" />
+            </marker>
+        </defs>
+    </svg>
+
+    <!-- Tooltip per mostrar informació addicional (actualment inactiu) -->
+    <div class="tooltip"></div>
+
+    <!-- Contenidor per a mostrar la descripció del punt seleccionat -->
+    <div id="description-container" class="description" style="display: none;">
+        <h3 id="description-title" align="center"></h3>
+        <ul id="description-list"></ul>
+    </div>
+
+    <script>
+        // Dades del roadmap, amb esdeveniments i les dates associades
+        const events = [
+            { 
+                name: "Planning", date: "2024-04-01", 
+                details: [
+                    "Define objectives and required resources",
+                    "Analyze the market and competitors",
+                    "Establish technical requirements"
+                ] 
+            },
+            { 
+                name: "Design", date: "2024-05-01", 
+                details: [
+                    "Create prototypes",
+                    "Define the Marketplace architecture",
+                    "Plan AI integration",
+                    "Prepare test cases",
+                    "Establish UX/UI foundations"
+                ] 
+            },
+            { 
+                name: "Development", date: "2024-06-01", 
+                details: [
+                    "Develop backend and database",
+                    "Implement the frontend",
+                    "Integrate AI for recommendations and search",
+                    "Optimize performance and security"
+                ] 
+            },
+            { 
+                name: "Testing", date: "2024-08-01", 
+                details: [
+                    "Launch private beta and gather feedback",
+                    "Adjust features based on real user needs",
+                    "Optimize performance and improve UX/UI",
+                    "Fix bugs and stabilize the system"
+                ] 
+            },
+            { 
+                name: "Launch", date: "2024-09-01", 
+                details: [
+                    "Official launch of ClassicHub",
+                    "Monitor system performance and optimize",
+                    "Expand the service catalog",
+                    "Plan future updates"
+                ] 
+            }
+        ];
+
+        // Funció per parsejar la data en el format "YYYY-MM-DD"
+        const parseDate = d3.timeParse("%Y-%m-%d");
+
+        // Funció per formatar les dates en format "Mes Any"
+        const formatDate = d3.timeFormat("%b %Y");
+
+        // Escala per a la línia de temps basada en les dates
+        const xScale = d3.scaleTime()
+                         .domain([parseDate("2024-04-01"), parseDate("2024-09-01")])
+                         .range([200, 780]);
+
+        // Selecció del SVG per afegir els elements de la línia de temps
+        const svg = d3.select(".timeline");
+
+        // Dibuix de la línia principal de la línia de temps
+        svg.append("line")
+           .attr("x1", 200).attr("y1", 200)
+           .attr("x2", 800).attr("y2", 200)
+           .attr("stroke", "black")
+           .attr("stroke-width", 1.5)
+           .attr("marker-end", "url(#arrow)");
+
+        // Variable per emmagatzemar l'event seleccionat
+        let selectedEvent = null;
+
+        // Creació dels cercles per a cada esdeveniment a la línia de temps
+        svg.selectAll(".event")
+           .data(events)
+           .enter()
+           .append("circle")
+           .attr("class", "event")
+           .attr("cx", d => xScale(parseDate(d.date)))  // Posició horitzontal segons la data
+           .attr("cy", 200)
+           .attr("r", 10)  // Radi del cercle
+           .attr("fill", "steelblue")  // Color inicial
+           .on("click", function(event, d) {
+                // Restaurar el color del node seleccionat anteriorment
+                if (selectedEvent) {
+                    d3.select(selectedEvent)
+                      .attr("fill", "steelblue");
+                }
+
+                // Canviar el color del node clicat
+                d3.select(this)
+                  .attr("fill", "orange");
+
+                // Actualitzar el node seleccionat
+                selectedEvent = this;
+
+                // Mostrar el nom de la fase
+                d3.select("#description-title")
+                  .text(d.name);
+
+                // Afegir els detalls en format llista
+                let listContainer = d3.select("#description-list");
+                listContainer.selectAll("li")
+                             .remove();  // Netejar la llista anterior
+                d.details.forEach(point => {
+                    listContainer.append("li")
+                                 .text(point);
+                });
+
+                // Mostrar el contenidor de descripció
+                d3.select("#description-container")
+                  .style("display", "block");
+           });
+
+        // Afegir els noms dels esdeveniments a la línia de temps
+        svg.selectAll(".label-name")
+           .data(events)
+           .enter()
+           .append("text")
+           .attr("class", "label")
+           .attr("x", d => xScale(parseDate(d.date)))
+           .attr("y", 180)
+           .text(d => d.name);
+
+        // Afegir les dates dels esdeveniments a la línia de temps
+        svg.selectAll(".label-date")
+           .data(events)
+           .enter()
+           .append("text")
+           .attr("class", "label")
+           .attr("x", d => xScale(parseDate(d.date)))
+           .attr("y", 230)
+           .text(d => formatDate(parseDate(d.date)));  // Utilitzar la nova funció formatDate
+    </script>
+
+</body>
+</html>
