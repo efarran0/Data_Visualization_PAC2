@@ -6,24 +6,29 @@
   <title>Contour Plot de Demanda Empresarial</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
+    
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
     }
+    
     .contour-plot {
       margin-top: 20px;
     }
+    
     .slider {
       position: absolute; /* Treu el desllisor del flux normal */
       margin-top: 20px; /* Distància des de la part superior */
       margin-left: 600px; /* Distància des de l'esquerra */
     }
+    
     .color-legend {
       display: flex;
       flex-direction: row;
       margin-left: 600px;
       margin-top: -450px;
     }
+    
     .tooltip {
       position: absolute;
       background: rgba(255, 255, 255, 0.9);
@@ -34,6 +39,7 @@
       font-size: 12px;
       opacity: 0;
     }
+    
   </style>
 </head>
 <body>
@@ -51,7 +57,8 @@
   <div class="tooltip"></div>
 
   <script>
-    const generateData = () => {
+    // Es defineix la funció per obtenir la data
+    const getData = () => {
       const data = [];
       const months = 12;
       const pointsPerMonth = 5000;
@@ -68,14 +75,15 @@
       return data;
     };
 
-    const data = generateData();
+    const data = getData();
     const width = 600, height = 500, margin = { top: 40, right: 40, bottom: 60, left: 60 };
     const xScale = d3.scaleLinear().range([margin.left, width - margin.right]);
     const yScale = d3.scaleLinear().range([height - margin.bottom, margin.top]);
     const svg = d3.select(".contour-plot").append("svg").attr("width", width).attr("height", height);
     const tooltip = d3.select(".tooltip");
 
-    function generateContourPlot(data) {
+    // Es defineix la funció per graficar els contorns
+    function getContourPlot(data) {
       svg.selectAll("*").remove();
       const contours = d3.contourDensity()
         .x(d => xScale(d.price))
@@ -87,11 +95,12 @@
 
       const maxDensity = d3.max(contours, d => d.value);
 
-      // Escala de colors de groc a vermell
+      // S'estableix l'escala de colors de groc a vermell
       const colorScale = d3.scaleLinear()
         .domain([0, maxDensity])
         .range(["yellow", "red"]);
 
+      // Es crea el SVG
       svg.selectAll("path")
         .data(contours)
         .enter()
@@ -111,6 +120,7 @@
           tooltip.transition().duration(500).style("opacity", 0);
         });
 
+      // Es defineixen les escales
       const xAxis = d3.axisBottom(xScale);
       const yAxis = d3.axisLeft(yScale);
 
@@ -123,10 +133,12 @@
       updateLegend(maxDensity);
     }
 
+    // Es defineix la funció per actualitzar la llegenda
     function updateLegend(maxDensity) {
       const legendSvg = d3.select("#legend-svg");
       legendSvg.selectAll("*").remove();
 
+      // Es construeix el gradient
       const gradient = legendSvg.append("defs")
         .append("linearGradient")
         .attr("id", "legendGradient")
@@ -136,6 +148,7 @@
       gradient.append("stop").attr("offset", "0%").attr("stop-color", "yellow");
       gradient.append("stop").attr("offset", "100%").attr("stop-color", "red");
 
+      // S'ubica la llegenda
       legendSvg.append("rect")
         .attr("x", 0)
         .attr("y", 10)
@@ -151,6 +164,7 @@
       legendSvg.append("g").attr("transform", "translate(0, 30)").call(legendAxis);
     }
 
+    // Funció per actualitzar el gràfic
     function updateChart(month) {
       const filteredData = data.filter(d => d.month === month);
       xScale.domain([0, d3.max(filteredData, d => d.price)]);
@@ -160,7 +174,8 @@
 
     updateChart(0);
 
-    const monthNames = ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"];
+    # S'estableixen les etiquetes dels mesos
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const slider = d3.select("#month-slider");
     const monthLabel = d3.select("#month-label");
 
