@@ -79,8 +79,8 @@
 
     const data = getData();
     const width = 600, height = 500, margin = { top: 40, right: 40, bottom: 60, left: 60 };
-    const xScale = d3.scaleLinear().range([margin.left, width - margin.right]);
-    const yScale = d3.scaleLinear().range([height - margin.bottom, margin.top]);
+    const xScale = d3.scaleLinear().domain([0, 60]).range([margin.left, width - margin.right]);
+    const yScale = d3.scaleLinear().domin([0, 60]).range([height - margin.bottom, margin.top]);
     const svg = d3.select(".contour-plot").append("svg").attr("width", width).attr("height", height);
     const tooltip = d3.select(".tooltip");
 
@@ -165,16 +165,6 @@
       const legendAxis = d3.axisBottom(legendScale).ticks(5);
       legendSvg.append("g").attr("transform", "translate(0, 30)").call(legendAxis);
     }
-
-    // Funció per actualitzar el gràfic
-    function updateChart(month) {
-      const filteredData = data.filter(d => d.month === month);
-      xScale.domain([0, d3.max(filteredData, d => d.price)]);
-      yScale.domain([0, d3.max(filteredData, d => d.quantity)]);
-      getContourPlot(filteredData);
-    }
-
-    updateChart(0);
 
     // S'estableixen les etiquetes dels mesos
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
