@@ -166,6 +166,13 @@
       legendSvg.append("g").attr("transform", "translate(0, 30)").call(legendAxis);
     }
 
+  function updateChart(month) {
+    const filteredData = data.filter(d => d.month === month);
+    getContourPlot(filteredData);
+  }
+
+  updateChart(0);
+
     // S'estableixen les etiquetes dels mesos
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const slider = d3.select("#month-slider");
