@@ -7,6 +7,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 ## Continguts
 - [Característiques](#característiques)
 - [Visualitzacions](#visualitzacions)
+- [Execució](#execució)
 - [Ús d'intel·ligències Artificals Generatives (IAGs)](#ús-d'Intel·ligències-Artificials-Generatives-(IAGs))
 - [Referències](#referències)
 
@@ -38,7 +39,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
   - Selecció temporal
   - Visualització de la densitat per zones
 
-## Com executar
+## Execució
 Les visualitzacions són interactives i intuïtives. No es requereix cap instal·lació addicional i només cal accedir pels hipervincles de l'apartat de [visualitzacions](#visualitzacions)
 
 ## Contribucions
