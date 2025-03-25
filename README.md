@@ -78,7 +78,10 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 En cada una de les visualitzacions s'ha emprat tant **DeepSeek Chat** com **ChatGPT-4** com assitents a l'hora de generar l'estructuració del codi D3.js i optimitzar l'estil i rendiment de la visualització.
 
 L'autor ha estat l'encarregat de elaborar el contignut teòric de la pràctica, supervisar les sugerències de les IAGs, completar el codi d'acord als requeriments de la visualització i verificar el resultat final.<br>
-**Així doncs, les IAGs han actuat en tot moment només com a assistents. La responsabilitat sobre el disseny, la pressa de decisions i el bon funcionament de cada visualització recau exclusivament a l'autor del recurs**
+
+**Així doncs, les IAGs han actuat en tot moment només com a assistents. La responsabilitat sobre el disseny, la pressa de decisions i el bon funcionament de cada visualització recau exclusivament a l'autor del recurs.<br>
+En cap cas les visualitzacions han estat generades de manera autònoma ni tampoc s'han emprat dades sensibles en la seva construcció.<br>
+Per tant, aquest ús està alineat amb les directrius de la UOC sobre IA generativa ([Guia de citació de IA](https://www.uoc.edu/portal/ca/recursos-a-suport-de-la-docencia/guia-citacio-ia-generativa.html)), garantint transparència i integritat en el procés.**
 
 ## Execució
 Les visualitzacions són interactives i intuïtives. No es requereix cap instal·lació addicional i només cal accedir pels hipervincles de l'apartat de [visualitzacions](#visualitzacions)
