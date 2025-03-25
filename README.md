@@ -60,13 +60,15 @@ Les visualitzacions són interactives i intuïtives. No es requereix cap instal�
 ### **Assistència per IA** (30%)
 | Eina | Aportació | Impacte |
 |------|--------------|---------|
-| **DeepSeek Chat** | Estructura | 25% |
-| **ChatGPT-4** | Optimització | 5% |
+| **DeepSeek Chat** | Estructura | 20% |
+| **ChatGPT-4** | Optimització | 10% |
 
 *"Els models d'IA van actuar exclusivament com a assistents tècnics, sent totes les decisions crítiques preses per l'autor."*
 
 ## Referències
 [Documentació oficial de D3.js](https://d3js.org)
+[Tutorials de D3.js](https://observablehq.com/@d3/learn-d3)
+[Fòrums d'ajuda](https://talk.observablehq.com/)
 
 ## Llicència
 Aquest treball està sota llicència [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
