@@ -34,19 +34,20 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
   - Visualització de la densitat per zones
 
 ## Accés Ràpid
-| Visualització | Enllaç Directe |
-|--------------|----------------|
-| Timeline | [Veure Timeline](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/) |
-| Dendrograma | [Veure Dendrograma](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/) |
-| Contour Plot | [Veure Contour Plot](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/) |
+[Timeline](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/)
+
+[Dendrograma](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/)
+
+[Contour Plot](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
 
 ## Ús d'Intel·ligències Artificials Generatives (IAGs)
 | Eina | Aplicació | % Ús |
 |------|-----------|------|
 | DeepSeek Chat | Estructura HTML/CSS | 20% |
 | ChatGPT-4 | Optimització algorismes D3 | 10% |
+| **Total** | | **30% del codi** |
 
-*Percentatge d'ús d'IA: 30%*
+*70% de desenvolupament humà*
 
 ## Referències
 [Documentació oficial de D3.js](https://d3js.org)
