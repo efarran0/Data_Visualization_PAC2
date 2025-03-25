@@ -38,12 +38,8 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
   - Selecció temporal
   - Visualització de la densitat per zones
 
-## Accés Ràpid
-[Timeline](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/)
-
-[Dendrograma](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/)
-
-[Contour Plot](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
+## Com executar
+Les visualitzacions són interactives i intuïtives. No es requereix cap instal·lació addicional i només cal accedir pels hipervincles de l'apartat de [visualitzacions](#visualitzacions)
 
 ## Contribucions
 
