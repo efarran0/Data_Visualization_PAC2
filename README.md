@@ -18,6 +18,14 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 **Circular dendrogram**: Esquema visual que resumeix la distribució i l'agrupació de clients d'un supermercat en base als seus atributs individuals.<br>
 **Contour plot**: Representació gràfica de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.<br>
 
+## Funcionalitat
+Per a observar qualsevol de les tres visualitzacions cal visitar la url <https://efarran0.github.io/Data_Visualization_PAC2/[visType]/>.
+
+Per exemple:
+<https://efarran0.github.io/Data_Visualization_PAC2/Timeline/><br>
+<https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/><br>
+<https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/><br>
+
 ## Ús d'Intel·ligències Artificials Generatives (IAGs)
 Per al desenvolupament de l'activitat s'han consultat IAGs a l'hora d'establir l'estructura principal del codi. Posteriorment l'autor ha afegit o modificat elements pel seu compte.
 
