@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contour Plot de Demanda Empresarial</title>
+  <title>Monthly demand forecast</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     
@@ -17,9 +17,9 @@
     }
     
     .slider {
-      position: absolute; /* Treu el desllisor del flux normal */
-      margin-top: 20px; /* Distància des de la part superior */
-      margin-left: 600px; /* Distància des de l'esquerra */
+      position: absolute;
+      margin-top: 20px;
+      margin-left: 600px;
     }
     
     .color-legend {
@@ -43,7 +43,7 @@
   </style>
 </head>
 <body>
-  <h1>Previsió de Demanda Empresarial per Mes</h1>
+  <h1>Monthly demand forecast</h1>
   <div class="slider">
     <label for="month-slider">Mes:</label>
     <input type="range" id="month-slider" min="0" max="11" value="0" step="1">
@@ -52,7 +52,7 @@
   <div class="contour-plot"></div>
   <div class="color-legend">
     <svg id="legend-svg" width="300" height="50"></svg>
-    <span>Densitat de Demanda</span>
+    <span>Demand density</span>
   </div>
   <div class="tooltip"></div>
 
@@ -106,10 +106,10 @@
         .enter()
         .append("path")
         .attr("d", d3.geoPath())
-        .attr("fill", d => colorScale(d.value)) // Utilitza l'escala de colors
+        .attr("fill", d => colorScale(d.value))
         .attr("stroke", "#000")
         .attr("stroke-width", 0.5)
-        .attr("opacity", 1) // Sense transparència addicional
+        .attr("opacity", 1)
         .on("mouseover", function(event, d) {
           tooltip.transition().duration(200).style("opacity", 0.9);
           tooltip.html(`Densitat: ${d.value.toFixed(2)}`)
