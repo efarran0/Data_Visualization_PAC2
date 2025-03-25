@@ -53,8 +53,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
   - Selecció d'algorismes clau
   
 - **Implementació**  
-  - Lògica de generació de dades sintètiques  
-  - Sistema de tooltips multi-nivell  
+  - Lògica de generació de dades sintètiques
   - Càlcul manual de mètriques
 
 - **Validació**  
