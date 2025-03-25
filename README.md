@@ -19,19 +19,19 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 - **Compatibilitat**: Chrome, Firefox i Edge (versions actuals)
 
 ## Visualitzacions
-### 1. Timeline
+### 1. [Timeline](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/)
 **Descripció**: Roadmap d'un projecte teòric orientat a les xarxes socials i l'aplicació d'Intel·ligències Artificials Generatives.
 
 **Funcionalitats**
   - Selecció d'etapes
 
-### 2. Circular Dendrogram
+### 2. [Dendrograma](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/)
 **Descripció**: Esquema visual que resumeix la distribució i l'agrupació de clients d'un supermercat en base als seus atributs individuals.
 
 **Funcionalitats**
   - Visualització d'atributs per clients, clústers i total
 
-### 3. Contour Plot
+### 3. [Contour Plot](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
 **Descripció**: Representació gràfica en 2D de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.
 
 **Funcionalitats**
