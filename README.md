@@ -10,30 +10,47 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 ## Característiques
 - **Tecnologia**: D3.js v7.8.2 + JavaScript ES6
 - **Interactivitat**:
-  - Elements cliclables
-  - Eix temporal interactiu mitjançant control deslliscant
+  - Selecció d'elements
+  - Selecció temporal amb control deslliscant
   - Tooltips informatius
-- **Dades**: Conjunts sintètics generats amb [Faker.js](https://github.com/marak/Faker.js/)
+- **Dades**: Conjunts sintètics
 - **Compatibilitat**: Chrome, Firefox i Edge (versions actuals)
 
 ## Visualitzacions
-**Timeline**: Roadmap d'un projecte teòric orientat a les xarxes socials i l'aplicació d'Intel·ligències Artificials Generatives.<br>
-**Circular Dendrogram**: Esquema visual que resumeix la distribució i l'agrupació de clients d'un supermercat en base als seus atributs individuals.<br>
-**Contour Plot**: Representació gràfica de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.
+- Timeline
+**Descripció**
+Roadmap d'un projecte teòric orientat a les xarxes socials i l'aplicació d'Intel·ligències Artificials Generatives.
+**Funcionalitats**
+  - Selecció d'etapes
 
-## Accés
-Per a observar qualsevol de les tres visualitzacions cal visitar la url "https://efarran0.github.io/Data_Visualization_PAC2/[visType]/".
+- Circular Dendrogram
+**Descripció**
+Esquema visual que resumeix la distribució i l'agrupació de clients d'un supermercat en base als seus atributs individuals.
+**Funcionalitats**
+  - Visualització d'atributs per clients, clústers i total
 
-Per exemple:<br>
-- [https://efarran0.github.io/Data_Visualization_PAC2/Timeline/](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/)
-- [https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/)
-- [https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
+- Contour Plot
+**Descripció**
+Representació gràfica en 2D de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.
+**Funcionalitats**
+  - Selecció temporal
+  - Visualització de la densitat per zones
+
+## Accés Ràpid
+| Visualització | Enllaç Directe |
+|--------------|----------------|
+| Timeline | [Veure Timeline](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/) |
+| Dendrograma | [Veure Dendrograma](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/) |
+| Contour Plot | [Veure Contour Plot](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/) |
 
 ## Ús d'Intel·ligències Artificials Generatives (IAGs)
-**DeepSeek**: Elaboració de l'estructura de la visualització en html<br>
-**ChatGPT**: Depuració i optimització del codi
+| Eina | Aplicació | % Ús |
+|------|-----------|------|
+| DeepSeek Chat | Estructura HTML/CSS | 20% |
+| ChatGPT-4 | Optimització algorismes D3 | 10% |
 
-Percentatge d'ús i contingut estimat per visualització: ~30%
+*Percentatge d'ús d'IA: 30%*
+
 
 ## Referències
 [Documentació oficial de D3.js](https://d3js.org)
