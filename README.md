@@ -11,7 +11,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 - [Referències](#referències)
 
 ## Característiques
-- **Tecnologia**: D3.js v7.8.2 + JavaScript ES6
+- **Tecnologia**: D3.js v7.9.0 + JavaScript ES6
 - **Interactivitat**:
   - Resposta a events de ratolí
   - Tooltips informatius
