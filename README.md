@@ -9,9 +9,10 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 
 - [Característiques](#característiques)
 - [Visualitzacions](#visualitzacions)
-- [Execució](#execució)
 - [Ús d'intel·ligències Artificals Generatives (IAGs)](#ús-d'Intel·ligències-Artificials-Generatives-(IAGs))
+- [Execució](#execució)
 - [Referències](#referències)
+- [Llicència](#llicència)
 
 ## Característiques
 
