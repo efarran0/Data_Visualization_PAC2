@@ -44,7 +44,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 | Eina | Aplicació | % Ús |
 |------|-----------|------|
 | DeepSeek Chat | Estructura HTML/CSS | 20% |
-| ChatGPT-4 | Optimització algorismes D3 | 10% |
+| ChatGPT-4 | Depuració i optimització codi D3 | 10% |
 | **Total** | | **30% del codi** |
 
 *70% de desenvolupament humà*
