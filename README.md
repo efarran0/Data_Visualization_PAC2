@@ -45,14 +45,29 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 
 [Contour Plot](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
 
-## Ús d'Intel·ligències Artificials Generatives (IAGs)
-| Eina | Aplicació | % Ús |
-|------|-----------|------|
-| DeepSeek Chat | Estructura HTML/CSS | 20% |
-| ChatGPT-4 | Depuració i optimització codi D3 | 10% |
-| **Total** | | **30%** |
+## Contribucions
 
-*70% de desenvolupament humà*
+### **Desenvolupament Humà** (70%)
+- **Disseny Conceptual**  
+  - Ideació de les visualitzacions
+  - Selecció d'algorismes clau
+  
+- **Implementació**  
+  - Lògica de generació de dades sintètiques  
+  - Sistema de tooltips multi-nivell  
+  - Càlcul manual de mètriques
+
+- **Validació**  
+  - Ajustos visuals personalitzats  
+  - Proves d'interactivitat
+
+### **Assistència per IA** (30%)
+| Eina | Aportació | Impacte |
+|------|--------------|---------|
+| **DeepSeek Chat** | Estructura | 25% |
+| **ChatGPT-4** | Optimització | 5% |
+
+*"Els models d'IA van actuar exclusivament com a assistents tècnics, sent totes les decisions crítiques preses per l'autor."*
 
 ## Referències
 [Documentació oficial de D3.js](https://d3js.org)
