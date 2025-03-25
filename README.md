@@ -2,15 +2,15 @@
 Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i que conformen el lliurament de la PAC2 de l'assignatura de Visualització de dades dins el Màster de Ciència de dades de la UOC.
 
 ## Continguts
-[Característiques](#característiques)<br>
-[Visualitzacions](#visualitzacions)<br>
-[Ús d'intel·ligències Artificals Generatives (IAGs)](#ús d'intel·ligències Artificials Generatives (IAGs))<br>
-[Referències](#referències)<br>
+- [Característiques](#característiques)
+- [Visualitzacions](#visualitzacions)
+- [Ús d'intel·ligències Artificals Generatives (IAGs)](#ús d'intel·ligències Artificials Generatives (IAGs))
+- [Referències](#referències)
 
 ## Característiques
 1.  Visualitzacions realitzades amb d3.js
 2.  Cert grau d'interactivitat única per a cada una.
-3.  Ús de dades fictícies en cada cas i que, a més, s'incporporen en la propia visualització corresponent.
+3.  Ús de dades fictícies en cada cas i que, a més, s'incorporen en la propia visualització corresponent.
 4.  Dissenyades per a consultar-se en ordenadors.
 
 ## Visualitzacions
@@ -19,12 +19,12 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 **Contour plot**: Representació gràfica de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.<br>
 
 ## Funcionalitat
-Per a observar qualsevol de les tres visualitzacions cal visitar la url <https://efarran0.github.io/Data_Visualization_PAC2/[visType]/>.
+Per a observar qualsevol de les tres visualitzacions cal visitar la url "https://efarran0.github.io/Data_Visualization_PAC2/[visType]/".
 
 Per exemple:<br>
-<https://efarran0.github.io/Data_Visualization_PAC2/Timeline/><br>
-<https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/><br>
-<https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/><br>
+[Timeline](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/)
+[Circular Dendrogram](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/)
+[Contour Plot](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
 
 ## Ús d'Intel·ligències Artificials Generatives (IAGs)
 Per al desenvolupament de l'activitat s'han consultat IAGs a l'hora d'establir l'estructura principal del codi. Posteriorment l'autor ha afegit o modificat elements pel seu compte.
