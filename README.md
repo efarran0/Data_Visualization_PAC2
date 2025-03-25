@@ -4,7 +4,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 ## Continguts
 - [Característiques](#característiques)
 - [Visualitzacions](#visualitzacions)
-- [Ús d'intel·ligències Artificals Generatives (IAGs)](#ús d'Intel·ligències Artificials Generatives (IAGs))
+- [Ús d'intel·ligències Artificals Generatives (IAGs)](#ús-d'Intel·ligències-Artificials-Generatives-(IAGs))
 - [Referències](#referències)
 
 ## Característiques
