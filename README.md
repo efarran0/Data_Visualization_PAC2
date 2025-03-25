@@ -58,4 +58,4 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 [Documentació oficial de D3.js](https://d3js.org)
 
 ## Llicència
-Aquest treball està sota llicència [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Aquest treball està sota llicència [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
