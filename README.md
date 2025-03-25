@@ -1,5 +1,8 @@
-# Data_Visualization_PAC2
-Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i que conformen el lliurament de la PAC2 de l'assignatura de Visualització de dades dins el Màster de Ciència de dades de la UOC.
+# Visualització de Dades - PAC2
+**Màster en Ciència de dades**
+*Universitat Oberta de Catalunya*
+
+Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les quals conformen el lliurament de la PAC2 de l'assignatura de Visualització de dades dins el Màster de Ciència de dades de la UOC.
 
 ## Continguts
 - [Característiques](#característiques)
@@ -10,8 +13,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 ## Característiques
 - **Tecnologia**: D3.js v7.8.2 + JavaScript ES6
 - **Interactivitat**:
-  - Selecció d'elements
-  - Selecció temporal amb control deslliscant
+  - Resposta a events de ratolí
   - Tooltips informatius
 - **Dades**: Conjunts sintètics
 - **Compatibilitat**: Chrome, Firefox i Edge (versions actuals)
@@ -54,3 +56,6 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 
 ## Referències
 [Documentació oficial de D3.js](https://d3js.org)
+
+## Llicència
+Aquest treball està sota llicència [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
