@@ -18,8 +18,8 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 
 ## Visualitzacions
 **Timeline**: Roadmap d'un projecte teòric orientat a les xarxes socials i l'aplicació d'Intel·ligències Artificials Generatives.<br>
-**Circular dendrogram**: Esquema visual que resumeix la distribució i l'agrupació de clients d'un supermercat en base als seus atributs individuals.<br>
-**Contour plot**: Representació gràfica de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.
+**Circular Dendrogram**: Esquema visual que resumeix la distribució i l'agrupació de clients d'un supermercat en base als seus atributs individuals.<br>
+**Contour Plot**: Representació gràfica de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.
 
 ## Accés
 Per a observar qualsevol de les tres visualitzacions cal visitar la url "https://efarran0.github.io/Data_Visualization_PAC2/[visType]/".
@@ -27,7 +27,7 @@ Per a observar qualsevol de les tres visualitzacions cal visitar la url "https:/
 Per exemple:<br>
 - [https://efarran0.github.io/Data_Visualization_PAC2/Timeline/](https://efarran0.github.io/Data_Visualization_PAC2/Timeline/)
 - [https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/](https://efarran0.github.io/Data_Visualization_PAC2/Circular_Dendrogram/)
-- [(https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
+- [https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/](https://efarran0.github.io/Data_Visualization_PAC2/Contour_Plot/)
 
 ## Ús d'Intel·ligències Artificials Generatives (IAGs)
 **DeepSeek**: Elaboració de l'estructura de la visualització en html<br>
