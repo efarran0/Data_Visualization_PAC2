@@ -17,19 +17,19 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js i q
 - **Compatibilitat**: Chrome, Firefox i Edge (versions actuals)
 
 ## Visualitzacions
-- Timeline
+1. Timeline
 **Descripció**
 Roadmap d'un projecte teòric orientat a les xarxes socials i l'aplicació d'Intel·ligències Artificials Generatives.
 **Funcionalitats**
   - Selecció d'etapes
 
-- Circular Dendrogram
+2. Circular Dendrogram
 **Descripció**
 Esquema visual que resumeix la distribució i l'agrupació de clients d'un supermercat en base als seus atributs individuals.
 **Funcionalitats**
   - Visualització d'atributs per clients, clústers i total
 
-- Contour Plot
+3. Contour Plot
 **Descripció**
 Representació gràfica en 2D de la previsió sobre la demanda mensual d'un cert producte al llarg de tot un any.
 **Funcionalitats**
