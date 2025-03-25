@@ -45,7 +45,7 @@
 <body>
   <h1>Monthly demand forecast</h1>
   <div class="slider">
-    <label for="month-slider">Mes:</label>
+    <label for="month-slider">Month:</label>
     <input type="range" id="month-slider" min="0" max="11" value="0" step="1">
     <span id="month-label">Gener</span>
   </div>
@@ -127,8 +127,8 @@
       svg.append("g").attr("transform", `translate(0, ${height - margin.bottom})`).call(xAxis);
       svg.append("g").attr("transform", `translate(${margin.left}, 0)`).call(yAxis);
 
-      svg.append("text").attr("x", width / 2).attr("y", height - 10).attr("text-anchor", "middle").text("Preu (euros)");
-      svg.append("text").attr("transform", "rotate(-90)").attr("x", -height / 2).attr("y", 20).attr("text-anchor", "middle").text("Quantitat (unitats)");
+      svg.append("text").attr("x", width / 2).attr("y", height - 10).attr("text-anchor", "middle").text("Price (euros)");
+      svg.append("text").attr("transform", "rotate(-90)").attr("x", -height / 2).attr("y", 20).attr("text-anchor", "middle").text("Quantity (units)");
 
       updateLegend(maxDensity);
     }
