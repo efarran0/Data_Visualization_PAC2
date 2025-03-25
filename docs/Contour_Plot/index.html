@@ -62,12 +62,14 @@
       const data = [];
       const months = 12;
       const pointsPerMonth = 5000;
-      const constant = 40;
-
       for (let month = 0; month < months; month++) {
+        // Es genera una variable aletoria controlada
+        const minC = 35;
+        const maxC = 45;
+        const randC = Math.random() * (maxConstant - minConstant) + minConstant;
         for (let i = 0; i < pointsPerMonth; i++) {
           const price = Math.random() * 50 + 1;
-          const quantity = constant / price;
+          const quantity = randC / price;
           const demand = quantity * 20;
           data.push({ month, price, quantity, demand });
         }
