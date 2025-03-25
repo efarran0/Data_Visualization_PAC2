@@ -79,8 +79,8 @@
 
     const data = getData();
     const width = 600, height = 500, margin = { top: 40, right: 40, bottom: 60, left: 60 };
-    const xScale = d3.scaleLinear().domain([0, 60]).range([margin.left, width - margin.right]);
-    const yScale = d3.scaleLinear().domain([0, 60]).range([height - margin.bottom, margin.top]);
+    const xScale = d3.scaleLinear().domain([0, 55]).range([margin.left, width - margin.right]);
+    const yScale = d3.scaleLinear().domain([0, 55]).range([height - margin.bottom, margin.top]);
     const svg = d3.select(".contour-plot").append("svg").attr("width", width).attr("height", height);
     const tooltip = d3.select(".tooltip");
 
