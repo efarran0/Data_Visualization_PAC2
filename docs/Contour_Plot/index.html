@@ -155,7 +155,7 @@
 
       // S'ubica la llegenda
       legendSvg.append("rect")
-        .attr("x", 0)
+        .attr("x", 5)
         .attr("y", 10)
         .attr("width", 300)
         .attr("height", 20)
@@ -166,7 +166,7 @@
         .range([0, 300]);
 
       const legendAxis = d3.axisBottom(legendScale).ticks(5);
-      legendSvg.append("g").attr("transform", "translate(10, 30)").call(legendAxis);
+      legendSvg.append("g").attr("transform", "translate(5, 30)").call(legendAxis);
     }
 
   function updateChart(month) {
