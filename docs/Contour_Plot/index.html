@@ -24,6 +24,7 @@
     
     .color-legend {
       display: flex;
+      align-items: center;
       flex-direction: row;
       margin-left: 600px;
       margin-top: -450px;
@@ -51,7 +52,7 @@
   </div>
   <div class="contour-plot"></div>
   <div class="color-legend">
-    <svg id="legend-svg" width="400" height="150"></svg>
+    <svg id="legend-svg" width="400" height="50"></svg>
     <span>Demand density</span>
   </div>
   <div class="tooltip"></div>
@@ -85,7 +86,7 @@
     const tooltip = d3.select(".tooltip");
 
     // Es defineix un domini fix per l'escala de densitat
-    const scaleDomain = [0, 22];
+    const scaleDomain = [0, 20];
 
     // Es defineix la funció per graficar els contorns
     function getContourPlot(data) {
