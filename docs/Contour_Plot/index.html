@@ -84,6 +84,9 @@
     const svg = d3.select(".contour-plot").append("svg").attr("width", width).attr("height", height);
     const tooltip = d3.select(".tooltip");
 
+    // Es defineix un domini fix per l'escala de densitat
+    const scaleDomain = [0, 0.5];
+
     // Es defineix la funció per graficar els contorns
     function getContourPlot(data) {
       svg.selectAll("*").remove();
@@ -95,11 +98,9 @@
         .bandwidth(20)
         (data);
 
-      const maxDensity = d3.max(contours, d => d.value);
-
       // S'estableix l'escala de colors de groc a vermell
       const colorScale = d3.scaleLinear()
-        .domain([0, maxDensity])
+        .domain(scaleDomain)
         .range(["yellow", "red"]);
 
       // Es crea el SVG
@@ -132,11 +133,11 @@
       svg.append("text").attr("x", width / 2).attr("y", height - 10).attr("text-anchor", "middle").text("Price (euros)");
       svg.append("text").attr("transform", "rotate(-90)").attr("x", -height / 2).attr("y", 20).attr("text-anchor", "middle").text("Quantity (units)");
 
-      updateLegend(maxDensity);
+      updateLegend(scaleDomain);
     }
 
     // Es defineix la funció per actualitzar la llegenda
-    function updateLegend(maxDensity) {
+    function updateLegend(domain) {
       const legendSvg = d3.select("#legend-svg");
       legendSvg.selectAll("*").remove();
 
@@ -159,7 +160,7 @@
         .style("fill", "url(#legendGradient)");
 
       const legendScale = d3.scaleLinear()
-        .domain([0, maxDensity])
+        .domain(domain)
         .range([0, 300]);
 
       const legendAxis = d3.axisBottom(legendScale).ticks(5);
