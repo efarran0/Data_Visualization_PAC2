@@ -91,7 +91,7 @@
     const tooltip = d3.select(".tooltip");
 
     // Es defineix un domini fix per l'escala de densitat
-    const scaleDomain = [0, 20];
+    const scaleDomain = [0, 25];
 
     // Es defineix la funció per graficar els contorns
     function getContourPlot(data) {
@@ -168,7 +168,7 @@
         .domain(domain)
         .range([0, 300]);
 
-      const legendAxis = d3.axisBottom(legendScale).ticks(5);
+      const legendAxis = d3.axisBottom(legendScale).ticks(6);
       legendSvg.append("g").attr("transform", "translate(5, 30)").call(legendAxis);
     }
 
