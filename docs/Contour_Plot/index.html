@@ -76,7 +76,7 @@
         for (let i = 0; i < pointsPerMonth; i++) {
           const price = Math.random() * 50 + 1;
           const quantity = randC / price;
-          const demand = quantity / price * 100;
+          const demand = quantity / price * 100 + 20;
           data.push({ month, price, quantity, demand });
         }
       }
