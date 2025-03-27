@@ -101,7 +101,8 @@
         .y(d => yScale(d.quantity))
         .weight(d => d.demand)
         .size([width, height])
-        .bandwidth(20)
+        .bandwidth(d => 30 - (d.price / 2))
+        .thresholds(15);
         (data);
 
       // S'estableix l'escala de colors de groc a vermell
