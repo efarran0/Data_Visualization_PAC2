@@ -98,15 +98,20 @@
       svg.selectAll("*").remove();
   
       // Bandwidth dinàmic
-      const priceExtent = d3.extent(data, d => d.price);
-      const dynamicBandwidth = 15 + (priceExtent[1] - priceExtent[0]) * 0.3;
-      
+      const adjustedData = data.map(d => ({
+      ...d,
+      weightedDemand: d.demand * Math.pow(1.5, (50 - d.price) / 10) // Factor exponencial
+      }));
+
+      // 2. Configuració de contorns amb fusió controlada
       const contours = d3.contourDensity()
         .x(d => xScale(d.price))
         .y(d => yScale(d.quantity))
-        .weight(d => d.demand)
+        .weight(d => d.weightedDemand) // Usa la demanda ponderada
         .size([width, height])
-        .bandwidth(dynamicBandwidth)(data);
+        .bandwidth(18) // Fix per a fusió consistent
+        .thresholds(5) // Només 5 nivells deliberats
+        (adjustedData);
 
       // S'estableix l'escala de colors de groc a vermell
       const colorScale = d3.scaleLinear()
