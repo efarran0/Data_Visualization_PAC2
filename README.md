@@ -89,8 +89,8 @@ Les visualitzacions són interactives i intuïtives. No es requereix cap instal�
 
 ## Referències
 
-[Documentació oficial de D3.js](https://d3js.org)
-[Tutorials de D3.js](https://observablehq.com/@d3/learn-d3)
+[Documentació oficial de D3.js](https://d3js.org)<br>
+[Tutorials de D3.js](https://observablehq.com/@d3/learn-d3)<br>
 [Fòrums d'ajuda](https://talk.observablehq.com/)
 
 ## Llicència
