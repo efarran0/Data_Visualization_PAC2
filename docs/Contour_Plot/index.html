@@ -57,7 +57,7 @@
   </div>
   <div class="contour-plot"></div>
   <div class="color-legend">
-    <span>Demand density:</span>
+    <span>Demand:</span>
     <svg id="legend-svg" width="450" height="50"></svg>
   </div>
   <div class="tooltip"></div>
@@ -76,7 +76,7 @@
         for (let i = 0; i < pointsPerMonth; i++) {
           const price = Math.random() * 50 + 1;
           const quantity = randC / price;
-          const demand = quantity / price * 100 + 15;
+          const demand = quantity / price * 80 + 15;
           data.push({ month, price, quantity, demand });
         }
       }
@@ -120,7 +120,7 @@
         .attr("opacity", 1)
         .on("mouseover", function(event, d) {
           tooltip.transition().duration(200).style("opacity", 0.9);
-          tooltip.html(`Densitat: ${d.value.toFixed(2)}`)
+          tooltip.html(`Demand: ${d.value.toFixed(2)}`)
             .style("left", (event.pageX + 5) + "px")
             .style("top", (event.pageY - 20) + "px");
         })
