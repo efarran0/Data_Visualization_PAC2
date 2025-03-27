@@ -101,8 +101,7 @@
         .y(d => yScale(d.quantity))
         .weight(d => d.demand)
         .size([width, height])
-        .bandwidth(d => 30 - (d.price / 2))
-        .thresholds(15)(data);
+        .bandwidth(d => 30 - (d.price / 2))(data);
 
       // S'estableix l'escala de colors de groc a vermell
       const colorScale = d3.scaleLinear()
