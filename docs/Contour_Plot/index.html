@@ -96,12 +96,17 @@
     // Es defineix la funció per graficar els contorns
     function getContourPlot(data) {
       svg.selectAll("*").remove();
+  
+      // Bandwidth dinàmic
+      const priceExtent = d3.extent(data, d => d.price);
+      const dynamicBandwidth = 15 + (priceExtent[1] - priceExtent[0]) * 0.3;
+      
       const contours = d3.contourDensity()
         .x(d => xScale(d.price))
         .y(d => yScale(d.quantity))
         .weight(d => d.demand)
         .size([width, height])
-        .bandwidth(d => 30 - (d.price / 2))(data);
+        .bandwidth(dynamicBandwidth)(data);
 
       // S'estableix l'escala de colors de groc a vermell
       const colorScale = d3.scaleLinear()
