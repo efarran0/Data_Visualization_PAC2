@@ -63,7 +63,7 @@ Aquest repositori inclou tres visualitzacions interactives creades amb d3.js les
 
 **Funcionalitats**
   - Selecció temporal
-  - Visualització de la densitat per zones
+  - Visualització de la demanda per nivells
 
 **Assistència d'IA**
 1. Consulta d'estructuració
